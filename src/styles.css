@@ -1,0 +1,109 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.input-search {
+    width: 700px;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 4px;
+    height: 50px;
+    
+}
+
+.container {
+    margin-top: 30px;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 4px;
+    max-width: 700px;
+}
+
+.current-weather-degree {
+    font-size: 130px;
+    font-weight: 500;
+    padding-right: 0;
+}
+
+.current-weather-city {
+    font-size: 50px;
+}
+
+.weather-details {
+    font-size: 20px;
+}
+
+.current-weather-hr {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 0;
+    margin-right: 20px;
+}
+
+.weather-next-day {
+    margin: 0;
+    padding: 5px;
+    font-size: 28px;
+}
+
+.weather-next-day-title {
+    padding: 0;
+    border-bottom: 1px solid #000;
+    margin: 0;
+    font-size: 18px;
+}
+
+.btn-search {
+    width: 80px;
+    border-color: rgb(39, 23, 133);
+}
+
+.search{
+    width: 560px;
+}
+
+.btn-current-geo {
+    width: 60px;
+    height: 50px;
+    border-color: rgb(46, 179, 41);
+    background-color: rgb(199, 241, 206);
+}
+
+.btn-search:hover {
+    background-color: rgb(169, 159, 230);
+}
+
+.btn-current-geo:hover {
+    background-color: rgb(112, 194, 125);
+    border-color: rgb(157, 197, 157);
+}
+
+i.fa-magnifying-glass {
+    font-size: 20px;
+    color: rgb(39, 23, 133);
+    padding-top: 4px;
+}
+
+i.fa-location-dot {
+    font-size: 20px;
+    color: rgb(23, 133, 41);
+    padding-top: 4px;
+}
+
+.current-weather-day {
+    padding: 0;
+}
+
+.weather {
+    margin-bottom: 20px;
+    margin-top: -20px;
+}
+
+.temp-type {
+    padding-right: 40px;
+}
+
+#temp-type-c,
+#temp-type-f {
+    padding: 3px;
+    cursor: pointer;
+    color: #3F5FFF;
+}
