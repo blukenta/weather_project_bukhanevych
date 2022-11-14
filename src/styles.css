@@ -5,7 +5,6 @@ body {
 .open-source {
     margin: 0 auto;
     display: block;
-    text-align: center;
 }
 
 .input-search {
@@ -13,14 +12,18 @@ body {
     border: 1px solid rgb(201, 201, 201);
     border-radius: 4px;
     height: 50px;
-    
+}
+
+.wrapper {
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .container {
+    max-width: 700px;
     margin-top: 30px;
     border: 1px solid rgb(201, 201, 201);
     border-radius: 4px;
-    max-width: 700px;
 }
 
 .current-weather-degree {
@@ -107,9 +110,17 @@ i.fa-location-dot {
     padding-right: 40px;
 }
 
+.weather-next-day img {
+    max-width: 50px;
+}
+
 #temp-type-c,
 #temp-type-f {
     padding: 3px;
     cursor: pointer;
     color: #3F5FFF;
+}
+
+#current-weather-desc {
+    text-transform: capitalize;
 }

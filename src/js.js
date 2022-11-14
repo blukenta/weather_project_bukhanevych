@@ -60,6 +60,8 @@ function showWeather(response) {
     let wind = document.querySelector("#current-wind");
     let weatherDesc = document.querySelector("#current-weather-desc");
     let currentTempType = document.querySelector("#current-temp-type");
+    let currentIcon = document.querySelector("#current-weather-icon");
+    let iconId = response.data.weather[0].icon;
     
 
     if (isObject(response)) {
@@ -68,7 +70,8 @@ function showWeather(response) {
         currentTempType.innerHTML = "°C";
         humidity.innerHTML = response.data.main.humidity;
         wind.innerHTML = Math.round(response.data.wind.speed);
-        weatherDesc.innerHTML = response.data.weather[0].main;
+        weatherDesc.innerHTML = response.data.weather[0].description;
+        currentIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconId}@2x.png`)
 
         let forecastUrl = showCurrentCityForecast(cityName.innerHTML, "metric");
         axios.get(forecastUrl).then(showForecast);
@@ -83,12 +86,30 @@ function showForecast(response) {
     let forecastThird = document.querySelector("#forecast-third");
     let forecastFourth = document.querySelector("#forecast-fourth");
     let forecastFifth = document.querySelector("#forecast-fifth");
+    
+    let forecastFirstIcon = document.querySelector("#forecast-first-icon");
+    let forecastSecondIcon = document.querySelector("#forecast-second-icon");
+    let forecastThirdIcon = document.querySelector("#forecast-third-icon");
+    let forecastFourthIcon = document.querySelector("#forecast-fourth-icon");
+    let forecastFifthIcon = document.querySelector("#forecast-fifth-icon");
+
+    let iconIdFirst = response.data.list[0].weather[0].icon;
+    let iconIdSecond = response.data.list[1].weather[0].icon;
+    let iconIdThird = response.data.list[2].weather[0].icon;
+    let iconIdFourth = response.data.list[3].weather[0].icon;
+    let iconIdFifth = response.data.list[4].weather[0].icon;
 
     forecastFirst.innerHTML = Math.round(response.data.list[0].main.temp);
     forecastSecond.innerHTML = Math.round(response.data.list[1].main.temp);
     forecastThird.innerHTML = Math.round(response.data.list[2].main.temp);
     forecastFourth.innerHTML = Math.round(response.data.list[3].main.temp);
     forecastFifth.innerHTML = Math.round(response.data.list[4].main.temp);
+
+    forecastFirstIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconIdFirst}@2x.png`);
+    forecastSecondIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconIdSecond}@2x.png`);
+    forecastThirdIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconIdThird}@2x.png`);
+    forecastFourthIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconIdFourth}@2x.png`);
+    forecastFifthIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconIdFifth}@2x.png`);
 }
 
 function showCurrentCityTemp(inputCity, unitsChoice) {

@@ -20,84 +20,96 @@
     
 </head>
 <body>
-    
-    <div class="container">
-        <div class="row justify-content-md-center p-4">
-            <div class="search">
-                <form class="input-group mb-3" id="search-city">
-                    <input type="text" class="form-control input-search" placeholder="Search city" aria-label="Search city"
-                        aria-describedby="basic-addon2" id="search">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary btn-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </form>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row justify-content-md-center p-4">
+                <div class="search">
+                    <form class="input-group mb-3" id="search-city">
+                        <input type="text" class="form-control input-search" placeholder="Search city" aria-label="Search city"
+                            aria-describedby="basic-addon2" id="search" autocomplete="off">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-search" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <button id="btn-current-geo" class="btn btn-outline-secondary btn-current-geo ml-4" type="button"><i class="fa-solid fa-location-dot"></i></button>
             </div>
-            <button id="btn-current-geo" class="btn btn-outline-secondary btn-current-geo ml-4" type="button"><i class="fa-solid fa-location-dot"></i></button>
-        </div>
 
-        <div class="row align-items-center p-4 weather">
-            <div class="col">
-                <div class="row">
-                    <h1 class="current-weather-city">
-                        <span id="current-city">New York</span>
-                        ☁️</h1>
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-3 current-weather-day">
-                        <span id="current-day">Sunday</span> 
-                        <span id="current-time">22:00</span><br>
-                        <span id="current-weather-desc">Clouds</span>
+            <div class="row align-items-center p-4 weather">
+                <div class="col">
+                    <div class="row">
+                        <h1 class="current-weather-city">
+                            <span id="current-city"></span>
+                            <img id="current-weather-icon"></img>
+                        </h1>
                     </div>
-                    <div class="col text-center bold current-weather-degree">
-                        <span id="current-weather-degree">15</span><span id="current-temp-type">°C</span>
-                    </div>
-                    <div class="col-form-label-lg text-center temp-type">
-                        <div class="mb-auto text-center" id="temp-type-c">
-                            °C
+                    <div class="row align-items-center">
+                        <div class="col-3 current-weather-day">
+                            <span id="current-day"></span> 
+                            <span id="current-time"></span><br>
+                            <span id="current-weather-desc"></span>
                         </div>
-                        <hr>
-                        <div class="mb-auto text-center" id="temp-type-f">
-                            °F
+                        <div class="col text-center bold current-weather-degree">
+                            <span id="current-weather-degree"></span><span id="current-temp-type"></span>
+                        </div>
+                        <div class="col-form-label-lg text-center temp-type">
+                            <div class="mb-auto text-center" id="temp-type-c">
+                                °C
+                            </div>
+                            <hr>
+                            <div class="mb-auto text-center" id="temp-type-f">
+                                °F
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col current-weather-hr">
-                        <hr>
+                    <div class="row">
+                        <div class="col current-weather-hr">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                            <!-- Precipitation: <span id="current-precipitation">87</span>%<br /> -->
+                            Humidity: <span id="current-humidity"></span>%<br />
+                            Wind:  <span id="current-wind"></span> km/h
                     </div>
                 </div>
-                <div class="weather-details">
-                        Precipitation: <span id="current-precipitation">87</span>%<br />
-                        Humidity: <span id="current-humidity">95</span>%<br />
-                        Wind:  <span id="current-wind">21</span> km/h
-                </div>
-            </div>
-            <div class="d-flex align-items-center flex-column align-self-stretch">
-                <div class="mb-auto text-center">
-                    <p class="weather-next-day-title" id="day-short-first">Mon</p>
-                    <p class="weather-next-day">☁️ <span id="forecast-first">10</span>°</p>
-                </div>
-                <div class="mb-auto text-center">
-                    <p class="weather-next-day-title" id="day-short-second">Tue</p>
-                    <p class="weather-next-day">🌧️ <span id="forecast-second">13</span>°</p>
-                </div> 
-                <div class="mb-auto text-center">
-                    <p class="weather-next-day-title" id="day-short-third">Wed</p>
-                    <p class="weather-next-day">☀️ <span id="forecast-third">12</span>°</p>
-                </div>
-                <div class="mb-auto text-center">
-                    <p class="weather-next-day-title" id="day-short-fourth">Thu</p>
-                    <p class="weather-next-day">🌥️ <span id="forecast-fourth">17</span>°</p>
-                </div>
-                <div class="mb text-center">
-                    <p class="weather-next-day-title" id="day-short-fifth">Fri</p>
-                    <p class="weather-next-day">🌤️ <span id="forecast-fifth">15</span>°</p>
+                <div class="d-flex align-items-center flex-column align-self-stretch">
+                    <div class="mb-auto text-center">
+                        <p class="weather-next-day-title" id="day-short-first">Mon</p>
+                        <p class="weather-next-day">
+                            <img id="forecast-first-icon">
+                            <span id="forecast-first"></span>°</p>
+                    </div>
+                    <div class="mb-auto text-center">
+                        <p class="weather-next-day-title" id="day-short-second">Tue</p>
+                        <p class="weather-next-day">
+                            <img id="forecast-second-icon"> 
+                            <span id="forecast-second"></span>°</p>
+                    </div> 
+                    <div class="mb-auto text-center">
+                        <p class="weather-next-day-title" id="day-short-third">Wed</p>
+                        <p class="weather-next-day">
+                            <img id="forecast-third-icon"> 
+                            <span id="forecast-third"></span>°</p>
+                    </div>
+                    <div class="mb-auto text-center">
+                        <p class="weather-next-day-title" id="day-short-fourth">Thu</p>
+                        <p class="weather-next-day">
+                            <img id="forecast-fourth-icon">
+                            <span id="forecast-fourth"></span>°</p>
+                    </div>
+                    <div class="mb text-center">
+                        <p class="weather-next-day-title" id="day-short-fifth">Fri</p>
+                        <p class="weather-next-day">
+                            <img id="forecast-fifth-icon"> 
+                            <span id="forecast-fifth"></span>°</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="open-source">
-        <a href="https://github.com/blukenta/weather_project_bukhanevych">Open-source code</a> by Oksana Bukhanevych
+        <div class="open-source">
+            <a href="https://github.com/blukenta/weather_project_bukhanevych">Open-source code</a> by Oksana Bukhanevych
+        </div>
     </div>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="/src/js.js"></script>
