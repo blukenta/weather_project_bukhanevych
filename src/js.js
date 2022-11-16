@@ -53,7 +53,6 @@ function showWeather(response) {
     const isObject = obj => {
         return Object.prototype.toString.call(obj) === '[object Object]'
     }
-
     let cityName = document.querySelector("#current-city");
     let cityTemp = document.querySelector("#current-weather-degree");
     let humidity = document.querySelector("#current-humidity");
@@ -131,6 +130,8 @@ function showCurrentCityForecast(city, unitsChoice) {
 
 function searchCity(event) {
     event.preventDefault();
+    tempTypeF.classList.remove("active");
+    tempTypeC.classList.add("active");
     let currentTempType = document.querySelector("#current-temp-type");
     currentTempType.innerHTML = "°C"
     let inputCitySearch = document.querySelector("#search").value;
@@ -139,30 +140,55 @@ function searchCity(event) {
     axios.get(url).then(showWeather);
 }
 
+function showConvertingForecast(response) {
+
+    let forecastFirst = document.querySelector("#forecast-first");
+    let forecastSecond = document.querySelector("#forecast-second");
+    let forecastThird = document.querySelector("#forecast-third");
+    let forecastFourth = document.querySelector("#forecast-fourth");
+    let forecastFifth = document.querySelector("#forecast-fifth");
+
+    forecastFirst.innerHTML = Math.round(response.data.list[0].main.temp);
+    forecastSecond.innerHTML = Math.round(response.data.list[1].main.temp);
+    forecastThird.innerHTML = Math.round(response.data.list[2].main.temp);
+    forecastFourth.innerHTML = Math.round(response.data.list[3].main.temp);
+    forecastFifth.innerHTML = Math.round(response.data.list[4].main.temp);
+ 
+}
+
 function showConverting(response) {
     const isObject = obj => {
         return Object.prototype.toString.call(obj) === '[object Object]'
     }
-
     let cityTemp = document.querySelector("#current-weather-degree");
     let currentTempType = document.querySelector("#current-temp-type");
 
     if (isObject(response)) {
         cityTemp.innerHTML = Math.round(response.data.main.temp);
         currentTempType.innerHTML = "°F"
+        let currentCity = document.querySelector("#current-city").innerHTML;
+        let unitsF = "imperial";
+        let url = showCurrentCityForecast(currentCity, unitsF);
+        axios.get(url).then(showConvertingForecast);
     } else {
         geoWeather();
     }
 }
 
-function convertToF() {
+function convertToF(event) {
+    event.preventDefault();
+    tempTypeC.classList.remove("active");
+    tempTypeF.classList.add("active");
     let currentCity = document.querySelector("#current-city").innerHTML;
     let unitsF = "imperial";
     let url = showCurrentCityTemp(currentCity, unitsF);
     axios.get(url).then(showConverting);
 }
 
-function convertToC() {
+function convertToC(event) {
+    event.preventDefault();
+    tempTypeF.classList.remove("active");
+    tempTypeC.classList.add("active");
     let currentCity = document.querySelector("#current-city").innerHTML;
     let unitsC = "metric";
     let url = showCurrentCityTemp(currentCity, unitsC);
